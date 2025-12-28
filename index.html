@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>नमस्ते! 🙏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            animation: wave 1.5s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(10deg);
+            }
+            75% {
+                transform: rotate(-10deg);
+            }
+        }
+
+        .greeting {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .response {
+            font-size: 1.8rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .emoji {
+            font-size: 4rem;
+            margin: 20px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .mood-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .mood-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .mood-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .mood-btn:active {
+            transform: translateY(0);
+        }
+
+        .message {
+            margin-top: 25px;
+            font-size: 1.3rem;
+            color: #764ba2;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .message.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .greeting {
+                font-size: 1.8rem;
+            }
+            .response {
+                font-size: 1.3rem;
+            }
+            .container {
+                padding: 40px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👋</h1>
+        <div class="greeting">नमस्ते! कैसे हो?</div>
+        <div class="emoji">😊</div>
+        <div class="response">
+            मैं बहुत अच्छा हूँ, धन्यवाद!<br>
+            आप कैसे हैं?
+        </div>
+
+        <div class="mood-buttons">
+            <button class="mood-btn" onclick="showMood('बढ़िया!')">बढ़िया! 😄</button>
+            <button class="mood-btn" onclick="showMood('अच्छा!')">अच्छा! 👍</button>
+            <button class="mood-btn" onclick="showMood('ठीक हूँ')">ठीक हूँ 😌</button>
+            <button class="mood-btn" onclick="showMood('मस्त!')">मस्त! 🎉</button>
+        </div>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        function showMood(mood) {
+            const messageEl = document.getElementById('message');
+            const responses = {
+                'बढ़िया!': 'वाह! यह सुनकर बहुत खुशी हुई! 🌟',
+                'अच्छा!': 'बहुत अच्छी बात है! 💫',
+                'ठीक हूँ': 'कोई बात नहीं, सब ठीक हो जाएगा! 💪',
+                'मस्त!': 'शानदार! जीते रहो! 🎊'
+            };
+
+            messageEl.textContent = responses[mood];
+            messageEl.classList.add('show');
+
+            setTimeout(() => {
+                messageEl.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
